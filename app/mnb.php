@@ -12,5 +12,5 @@
         echo "nincs";
     }*/
 
-    $valid->GetExchange('HUF','USD');
+    /*print_r($valid->GetExchange('HUF','USD'));*/
 ?>
