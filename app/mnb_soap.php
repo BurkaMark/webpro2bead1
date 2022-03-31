@@ -1,17 +1,18 @@
 <?php
     class MNBSoap
     {
-        private $client;
-        private $doc;
+        /* Private variables */
+        private $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
 
+        /* Constructor */
         public function __construct()
         {
 
         }
 
+        /* Validating input currencie */
         public function ValidateCurrencies($curr)
         {
-            $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
             $result = json_decode(json_encode((array) simplexml_load_string($client->GetCurrencies()->GetCurrenciesResult)), 1);
             $cur_array = $result['Currencies'];
             $array = $cur_array['Curr'];
@@ -26,11 +27,11 @@
             }
         }
 
-        public function GetExchange($curr1, $curr2)
+        /* Get exchange rates between two currencies */
+        public function GetExchangeRates($curr1, $curr2)
         {
             try
             {
-                $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
                 $result = simplexml_load_string($client->GetCurrentExchangeRates()->GetCurrentExchangeRatesResult);
 
                 $count = $result->Day[0]->count();
