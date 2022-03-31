@@ -7,7 +7,7 @@
         /* Constructor */
         public function __construct()
         {
-
+            $this->mnbModel = $this->model('MNB');
         }
 
         /* Validating input currencie */
