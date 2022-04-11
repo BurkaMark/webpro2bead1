@@ -1,0 +1,17 @@
+<?php
+    /* Start the session */
+    session_start();
+
+    /* Function for checking if the user is logged in */
+    function isLoggedIn()
+    {
+        if(isset($_SESSION['user_id']))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+?>

@@ -7,6 +7,6 @@
 
     /* Application static variables */
     define('APPROOT', dirname(dirname(__FILE__)));
-    define('URLROOT', 'http://localhost/webprog2bead1');
+    define('URLROOT', 'http://localhost/webpro2bead1');
     define('SITENAME', 'MaTaSz');
 ?>
