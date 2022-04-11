@@ -20,11 +20,14 @@
             {
                 $row = $this->db->single();
 
-                $trail_name = $row->nev;
-                $trail_length = $row->hossz;
-                $trail_stops = $row->allomas;
-                $trail_time = $row->ido;
-                $trail_guide = $row->vezetes;
+                $result = ['name' => $row->nev,
+                            'length' => $row->hossz,
+                            'stops' => $row->allomas,
+                            'time' => $row->ido,
+                            'guide' => $row->vezetes,
+                            'setlement' => '',
+                            'np' => ''];
+
                 $trail_set_id = $row->telepulesid;
 
                 $this->db->query('SELECT * FROM telepules WHERE id = :trail_set_id');
@@ -34,7 +37,8 @@
                 {
                     $row = $this->db->single();
 
-                    $trail_setlem = $row->nev;
+                    $result = ['setlement' => $row->nev];
+
                     $trail_np_id = $row->npid;
 
                     $this->db->query('SELECT * FROM np WHERE id = :trail_np_id');
@@ -44,7 +48,7 @@
                     {
                         $row = $this->db->single();
 
-                        $trail_np = $row->nev;
+                        $result = ['np' => $row->nev];
                     }
                     else
                     {
@@ -60,14 +64,6 @@
             {
                 return 1;
             }
-
-            $result = [ 'name'      => $trail_name,
-                        'length'    => $trail_length,
-                        'stops'     => $trail_stops,
-                        'time'      => $trail_time,
-                        'guide'     => $trail_guide,
-                        'setlement' => $trail_setlem,
-                        'np'        => $trail_np];
 
             return $result;
         }
@@ -82,8 +78,15 @@
             {
                 $row = $this->db->single();
 
+                $result = ['name' => '',
+                            'length' => '',
+                            'stops' => '',
+                            'time' => '',
+                            'guide' => '',
+                            'setlement' => $row->nev,
+                            'np' => ''];
+
                 $trail_set_id = $row->id;
-                $trail_setlem = $row->nev;
                 $trail_np_id = $row->npid;
 
                 $this->db->query('SELECT * FROM ut WHERE telepulesid = :trail_set_id');
@@ -93,11 +96,11 @@
                 {
                     $row = $this->db->single();
 
-                    $trail_name = $row->nev;
-                    $trail_length = $row->hossz;
-                    $trail_stops = $row->allomas;
-                    $trail_time = $row->ido;
-                    $trail_guide = $row->vezetes;
+                    $result = ['name' => $row->nev,
+                                'length' => $row->hossz,
+                                'stops' => $row->allomas
+                                'time' => $row->ido
+                                'guide' => $row->vezetes];
                 }
                 else
                 {
@@ -111,7 +114,7 @@
                 {
                     $row = $this->db->single();
 
-                    $trail_np = $row->nev;
+                    $result['np' => $row->nev];
                 }
                 else
                 {
@@ -122,14 +125,6 @@
             {
                 return 1;
             }
-
-            $result = [ 'name'      => $trail_name,
-                        'length'    => $trail_length,
-                        'stops'     => $trail_stops,
-                        'time'      => $trail_time,
-                        'guide'     => $trail_guide,
-                        'setlement' => $trail_setlem,
-                        'np'        => $trail_np];
 
             return $result;
         }
@@ -144,8 +139,15 @@
             {
                 $row = $this->db->single();
 
+                result = ['name' => '',
+                            'length' => '',
+                            'stops' => '',
+                            'time' => '',
+                            'guide' => '',
+                            'setlement' => '',
+                            'np' => $row->nev];
+
                 $trail_np_id = $row->id;
-                $trail_np = $row->nev;
 
                 $this->db->query('SELECT * FROM telepules WHERE npid = :trail_np_id');
                 $this->db->bind(':trail_np_id', $trail_np_id);
@@ -154,8 +156,9 @@
                 {
                     $row = $this->db->single();
 
+                    $result['setlement' => $row->nev];
+
                     $trail_set_id = $row->id;
-                    $trail_setlem = $row->nev;
 
                     $this->db->query('SELECT * FROM ut WHERE telepulesid = :trail_set_id');
                     $this->db->bind(':trail_set_id', $trail_set_id);
@@ -164,11 +167,11 @@
                     {
                         $row = $this->db->single();
 
-                        $trail_name = $row->nev;
-                        $trail_length = $row->hossz;
-                        $trail_stops = $row->allomas;
-                        $trail_time = $row->ido;
-                        $trail_guide = $row->vezetes;
+                        $result = ['name' => $row->nev,
+                                'length' => $row->hossz,
+                                'stops' => $row->allomas
+                                'time' => $row->ido
+                                'guide' => $row->vezetes];
                     }
                     else
                     {
@@ -184,14 +187,6 @@
             {
                 return 1;
             }
-
-            $result = [ 'name'      => $trail_name,
-                        'length'    => $trail_length,
-                        'stops'     => $trail_stops,
-                        'time'      => $trail_time,
-                        'guide'     => $trail_guide,
-                        'setlement' => $trail_setlem,
-                        'np'        => $trail_np];
 
             return $result;
         }
