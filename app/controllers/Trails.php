@@ -22,6 +22,7 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [   'name' => trim($_POST['name']),
+                            'trail' => '',
                             'nameError' => '',
                             'trailError' => '',
                             'setlmError' => '',

@@ -187,6 +187,8 @@
         {
             $_SESSION['user_id']    = $user->id;
             $_SESSION['username']   = $user->username;
+            $_SESSION['lastName']   = $user->vezeteknev;
+            $_SESSION['firstName']  = $user->keresztnev;
 
             header('location:' . URLROOT . '/pages/index');
         }

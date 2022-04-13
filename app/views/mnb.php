@@ -16,35 +16,44 @@
 	<form action="<?php echo URLROOT; ?>/mnb/GetExchangeRates" method ="POST">
 		<input type="text" placeholder="Valutáról" name="curr1">
 		<span class="invalidFeedback">
-			<?php echo $data['trailError']; ?>
+			<?php echo $data['curr1Error']; ?>
 		</span>
 		<input type="text" placeholder="Valutára" name="curr2">
 		<span class="invalidFeedback">
-			<?php echo $data['trailError']; ?>
+			<?php echo $data['curr2Error']; ?>
 		</span>
 
 		<button id="submit" type="submit" value="submit">Átváltás</button>
 	</form>
 
 	<span class="invalidFeedback">
-        <?php echo $data['trailError']; ?>
+        <?php echo $data['rate1Error']; ?>
+		<?php echo $data['rate2Error']; ?>
     </span>
 
 	<div class="container-item">
+		<h3>A keresés eredménye:</h3>
 		<table>
 			<tr>
-				<th>curr1</th>
-				<th>curr2</th>
+				<th><?php echo $data['curr1']; ?></th>
+				<th><?php echo $data['curr2']; ?></th>
 			</tr>
 			<tr>
-				<td>unit1</td>
-				<td>unit2</td>
+				<td><?php echo $data['unit1']; ?></td>
+				<td><?php echo $data['rate1']; ?></td>
+			</tr>
+		</table>
+		<h3>Visszaváltás:</h3>
+		<table>
+			<tr>
+				<th><?php echo $data['curr2']; ?></th>
+				<th><?php echo $data['curr1']; ?></th>
 			</tr>
 			<tr>
-				<td>rate1</td>
-				<td>rate2</td>
+				<td><?php echo $data['unit2']; ?></td>
+				<td><?php echo $data['rate2']; ?></td>
 			</tr>
-		</table>	
+		</table>
 	</div>
 </div>
 </body>
