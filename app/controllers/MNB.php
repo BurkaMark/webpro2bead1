@@ -1,13 +1,28 @@
 <?php
-    class MNBSoap extends Controller
+    class Mnb extends Controller
     {
         /* Private variables */
-        private $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
+        private $client;
 
         /* Constructor */
         public function __construct()
         {
             
+        }
+
+        public function index()
+        {
+            $data = ['curr1' => '',
+                        'curr2' => '',
+                        'unit1' => '',
+                        'unit2' => '',
+                        'rate1' => '',
+                        'rate2' => '',
+                        'curr1Error' => '',
+                        'curr2Error' => '',
+                        'rate1Error' => '',
+                        'rate2Error' => ''];
+            $this->view('mnb', $data);
         }
 
         /* Get exchange rates between two currencies */
@@ -36,7 +51,7 @@
                             'rate2' => '',
                             'curr1Error' => '',
                             'curr2Error' => '',
-                            'rate1Error' => ''
+                            'rate1Error' => '',
                             'rate2Error' => ''];
 
                 $currencieValidation = "/^[A-Z]*$/";
@@ -49,7 +64,7 @@
                 {
                     $data['curr1Error'] = 'Hibásan megadott valutó azonosító! Kérem próbálja meg újra! (pl.: HUF, EUR)';
                 }
-                elseif(!ValidateCurrencies($data['curr1']))
+                elseif(!$this->ValidateCurrencies($data['curr1']))
                 {
                     $data['curr1Error'] = 'A megadott átváltandó valuta nem található adatbázisunkban!';
                 }
@@ -62,7 +77,7 @@
                 {
                     $data['curr2Error'] = 'Hibásan megadott valutó azonosító! Kérem próbálja meg újra! (pl.: HUF, EUR)';
                 }
-                elseif(!ValidateCurrencies($data['curr2']))
+                elseif(!$this->ValidateCurrencies($data['curr2']))
                 {
                     $data['curr2Error'] = 'A megadott valuta, melyre át szeretne váltani, nem található adatbázisunkban!';
                 }
@@ -71,6 +86,7 @@
                 {
                     try
                     {
+                        $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
                         $result = simplexml_load_string($client->GetCurrentExchangeRates()->GetCurrentExchangeRatesResult);
 
                         $count = $result->Day[0]->count();
@@ -133,11 +149,11 @@
 
                     if($rate1 == 0)
                     {
-                        $data['rate1Error'] = 'Az átváltandó valutáról nincs a mai napon árfolyam információ.'
+                        $data['rate1Error'] = 'Az átváltandó valutáról nincs a mai napon árfolyam információ.';
                     }
                     if($rate2 == 0)
                     {
-                        $data['rate2Error'] = 'A valutáról, melyre át szeretne váltani, nincs a mai napon árfolyam információ.'
+                        $data['rate2Error'] = 'A valutáról, melyre át szeretne váltani, nincs a mai napon árfolyam információ.';
                     }
 
                     if(empty($data['rate1Error']) && empty($data['rate2Error']))
@@ -166,7 +182,7 @@
                             $data['unit1'] = $unit1;
                             $data['rate1'] = ($f_unit1 / $f_rate1 * $f_unit1) * ($f_rate2 / $f_unit2);
                             $data['unit2'] = $unit2;
-                            $data['rate2'] = ($f_unit2 / $f_rate2 * $f_unit2) * ($f_rate1 / $f_unit1)
+                            $data['rate2'] = ($f_unit2 / $f_rate2 * $f_unit2) * ($f_rate1 / $f_unit1);
                         }
                     }
                 }
@@ -193,6 +209,7 @@
         {
             try
             {
+                $client = new SoapClient("http://www.mnb.hu/arfolyamok.asmx?WSDL");
                 $result = json_decode(json_encode((array) simplexml_load_string($client->GetCurrencies()->GetCurrenciesResult)), 1);
                 $cur_array = $result['Currencies'];
                 $array = $cur_array['Curr'];

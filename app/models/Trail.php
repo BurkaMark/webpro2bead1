@@ -1,5 +1,5 @@
 <?php
-    class Trails
+    class Trail
     {
         /* Private variables */
         private $db;
@@ -16,10 +16,10 @@
             $this->db->query('SELECT * FROM ut WHERE nev = :name');
             $this->db->bind(':name', $name);
 
-            if($this->db->rowCount() > 0)
-            {
-                $row = $this->db->single();
+            $row = $this->db->single();
 
+            if(!empty($row))
+            {
                 $result = ['name' => $row->nev,
                             'length' => $row->hossz,
                             'stops' => $row->allomas,
@@ -33,22 +33,22 @@
                 $this->db->query('SELECT * FROM telepules WHERE id = :trail_set_id');
                 $this->db->bind(':trail_set_id', $trail_set_id);
 
-                if($this->db->rowCount() > 0)
-                {
-                    $row = $this->db->single();
+                $row = $this->db->single();
 
-                    $result = ['setlement' => $row->nev];
+                if(!empty($row))
+                {
+                    $result['setlement'] = $row->nev;
 
                     $trail_np_id = $row->npid;
 
                     $this->db->query('SELECT * FROM np WHERE id = :trail_np_id');
                     $this->db->bind(':trail_np_id', $trail_np_id);
-                    
-                    if($this->db->rowCount() > 0)
-                    {
-                        $row = $this->db->single();
 
-                        $result = ['np' => $row->nev];
+                    $row = $this->db->single();
+                    
+                    if(!empty($row))
+                    {
+                        $result['np'] = $row->nev;
                     }
                     else
                     {
@@ -74,10 +74,10 @@
             $this->db->query('SELECT * FROM telepules WHERE nev = :settlement');
             $this->db->bind(':settlement', $settlement);
 
-            if($this->db->rowCount() > 0)
-            {
-                $row = $this->db->single();
+            $row = $this->db->single();
 
+            if(!empty($row))
+            {
                 $result = ['name' => '',
                             'length' => '',
                             'stops' => '',
@@ -92,15 +92,15 @@
                 $this->db->query('SELECT * FROM ut WHERE telepulesid = :trail_set_id');
                 $this->db->bind(':trail_set_id', $trail_set_id);
 
-                if($this->db->rowCount() > 0)
-                {
-                    $row = $this->db->single();
+                $row = $this->db->single();
 
-                    $result = ['name' => $row->nev,
-                                'length' => $row->hossz,
-                                'stops' => $row->allomas
-                                'time' => $row->ido
-                                'guide' => $row->vezetes];
+                if(!empty($row))
+                {
+                    $result['name'] = $row->nev;
+                    $result['length'] = $row->hossz;
+                    $result['stops'] = $row->allomas;
+                    $result['time'] = $row->ido;
+                    $result['guide'] = $row->vezetes;
                 }
                 else
                 {
@@ -110,11 +110,11 @@
                 $this->db->query('SELECT * FROM np WHERE id = :trail_np_id');
                 $this->db->bind(':trail_np_id', $trail_np_id);
 
-                if($this->db->rowCount() > 0)
-                {
-                    $row = $this->db->single();
+                $row = $this->db->single();
 
-                    $result['np' => $row->nev];
+                if(!empty($row))
+                {
+                    $result['np'] = $row->nev;
                 }
                 else
                 {
@@ -135,11 +135,11 @@
             $this->db->query('SELECT * FROM np WHERE nev = :nat_park');
             $this->db->bind(':nat_park', $nat_park);
 
-            if($this->db->rowCount() > 0)
-            {
-                $row = $this->db->single();
+            $row = $this->db->single();
 
-                result = ['name' => '',
+            if(!empty($row))
+            {
+                $result = ['name' => '',
                             'length' => '',
                             'stops' => '',
                             'time' => '',
@@ -152,26 +152,26 @@
                 $this->db->query('SELECT * FROM telepules WHERE npid = :trail_np_id');
                 $this->db->bind(':trail_np_id', $trail_np_id);
 
-                if($this->db->rowCount() > 0)
-                {
-                    $row = $this->db->single();
+                $row = $this->db->single();
 
-                    $result['setlement' => $row->nev];
+                if(!empty($row))
+                {
+                    $result['setlement'] = $row->nev;
 
                     $trail_set_id = $row->id;
 
                     $this->db->query('SELECT * FROM ut WHERE telepulesid = :trail_set_id');
                     $this->db->bind(':trail_set_id', $trail_set_id);
 
-                    if($this->db->rowCount() > 0)
-                    {
-                        $row = $this->db->single();
+                    $row = $this->db->single();
 
-                        $result = ['name' => $row->nev,
-                                'length' => $row->hossz,
-                                'stops' => $row->allomas
-                                'time' => $row->ido
-                                'guide' => $row->vezetes];
+                    if(!empty($row))
+                    {
+                        $result['name'] = $row->nev;
+                        $result['length'] = $row->hossz;
+                        $result['stops'] = $row->allomas;
+                        $result['time'] = $row->ido;
+                        $result['guide'] = $row->vezetes;
                     }
                     else
                     {

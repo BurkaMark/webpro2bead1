@@ -8,13 +8,11 @@
     ?>
 </div>
 
-<div class="container center">
-    <h1>
-        Új bejegyzés létrehozása
-    </h1>
+<div class="container_center">
+    <h1>Új bejegyzés létrehozása</h1>
 
     <form action="<?php echo URLROOT; ?>/posts/create" method="POST">
-        <div class="form-item">
+        <div class="form_item">
             <input type="text" name="title" placeholder="Cím...">
 
             <span class="invalidFeedback">
@@ -30,7 +28,7 @@
             </span>
         </div>
 
-        <button class="btn green" name="submit" type="submit">Küldés</button>
+        <button class="create" name="submit" type="submit">Létrehozás</button>
     </form>
 </div>
 </body>

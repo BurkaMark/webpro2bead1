@@ -8,20 +8,20 @@
     ?>
 </div>
 
-<div class="container">
+<div class="container_center">
     <h1>Hírek és bejegyzések</h1>
 
     <?php if(isLoggedIn()): ?>
-        <a class="btn green" href="<?php echo URLROOT; ?>/posts/create">Új bejegyzés</a>
+        <a class="create_post" href="<?php echo URLROOT; ?>/posts/create">Új bejegyzés</a>
     <?php endif; ?>
 
     <?php foreach($data['posts'] as $post): ?>
-        <div class="container-item">
+        <div id="posts_container">
             <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post->user_id): ?>
-                <a class="btn orange" href="<?php echo URLROOT . "/posts/update/" . $post->id ?>">Módosítás</a>
+                <a class="change" href="<?php echo URLROOT . "/posts/update/" . $post->id ?>">Módosítás</a>
 
                 <form action="<?php echo URLROOT . "/posts/delete/" . $post->id ?>" method="POST">
-                    <input type="submit" name="delete" value="Delete" class="btn red">
+                    <input type="submit" name="delete" value="Delete" class="delete">
                 </form>
             <?php endif; ?>
 

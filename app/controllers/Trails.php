@@ -1,5 +1,5 @@
 <?php
-    class TrailsSoap extends Controller
+    class Trails extends Controller
     {
         /* Constructor */
         public function __construct()
@@ -7,11 +7,27 @@
             $this->trailsModel = $this->model('Trail');
         }
 
+        public function index()
+        {
+            $data = [   'name' => '',
+                        'settlement' => '',
+                        'nat_park' => '',
+                        'trail' => [],
+                        'nameError' => '',
+                        'trailError' => '',
+                        'setlmError' => '',
+                        'npError' => ''];
+
+            $this->view('trail', $data);
+        }
+
         /* Function to get the trail by it's name */
         public function getTrailByName()
         {
             $data = [   'name' => '',
-                        'trail' => '',
+                        'settlement' => '',
+                        'nat_park' => '',
+                        'trail' => [],
                         'nameError' => '',
                         'trailError' => '',
                         'setlmError' => '',
@@ -21,12 +37,7 @@
             {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $data = [   'name' => trim($_POST['name']),
-                            'trail' => '',
-                            'nameError' => '',
-                            'trailError' => '',
-                            'setlmError' => '',
-                            'npErrpr' => ''];
+                $data['name'] = trim($_POST['name']);
 
                 if(empty($data['name']))
                 {
@@ -59,7 +70,9 @@
             else
             {
                 $data = [   'name' => '',
-                            'trail' => '',
+                            'settlement' => '',
+                            'nat_park' => '',
+                            'trail' => [],
                             'nameError' => '',
                             'trailError' => '',
                             'setlmError' => '',
@@ -72,8 +85,10 @@
         /* Function to get the trail by the settlement it belongs to */
         public function getTrailBySettlement()
         {
-            $data = [   'settlement' => '',
-                        'trail' => '',
+            $data = [   'name' => '',
+                        'settlement' => '',
+                        'nat_park' => '',
+                        'trail' => [],
                         'nameError' => '',
                         'trailError' => '',
                         'setlmError' => '',
@@ -83,11 +98,7 @@
             {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $data = [   'settlement' => trim($_POST['settlement']),
-                            'nameError' => '',
-                            'trailError' => '',
-                            'setlmError' => '',
-                            'npErrpr' => ''];
+                $data['settlement'] = trim($_POST['settlement']);
 
                 if(empty($data['settlement']))
                 {
@@ -119,8 +130,10 @@
             }
             else
             {
-                $data = [   'settlement' => '',
-                            'trail' => '',
+                $data = [   'name' => '',
+                            'settlement' => '',
+                            'nat_park' => '',
+                            'trail' => [],
                             'nameError' => '',
                             'trailError' => '',
                             'setlmError' => '',
@@ -133,8 +146,10 @@
         /* Function to get the trail by thy national park it belongs to */
         public function getTrailByNationalPark()
         {
-            $data = [   'nat_park' => '',
-                        'trail' => '',
+            $data = [   'name' => '',
+                        'settlement' => '',
+                        'nat_park' => '',
+                        'trail' => [],
                         'nameError' => '',
                         'trailError' => '',
                         'setlmError' => '',
@@ -144,11 +159,7 @@
             {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $data = [   'settlenat_parkment' => trim($_POST['nat_park']),
-                            'nameError' => '',
-                            'trailError' => '',
-                            'setlmError' => '',
-                            'npErrpr' => ''];
+                $data['settlenat_parkment'] = trim($_POST['nat_park']);
 
                 if(empty($data['nat_park']))
                 {
@@ -180,8 +191,10 @@
             }
             else
             {
-                $data = [   'nat_park' => '',
-                            'trail' => '',
+                $data = [   'name' => '',
+                            'settlement' => '',
+                            'nat_park' => '',
+                            'trail' => [],
                             'nameError' => '',
                             'trailError' => '',
                             'setlmError' => '',

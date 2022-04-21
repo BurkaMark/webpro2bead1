@@ -2,17 +2,17 @@
    require APPROOT . '/views/includes/head.php';
 ?>
 
-<div class="navbar dark">
+<div class="navbar">
     <?php
        require APPROOT . '/views/includes/navigation.php';
     ?>
 </div>
 
-<div class="container center">
+<div class="container_center">
     <h1>Bejegyzés módosítása</h1>
 
     <form action="<?php echo URLROOT; ?>/posts/update/<?php echo $data['post']->id ?>" method="POST">
-        <div class="form-item">
+        <div class="form_item">
             <input type="text" name="title" value="<?php echo $data['post']->title ?>">
 
             <span class="invalidFeedback">
@@ -28,7 +28,7 @@
             </span>
         </div>
 
-        <button class="btn green" name="submit" type="submit">Küldés</button>
+        <button class="create" name="submit" type="submit">Módosítás</button>
     </form>
 </div>
 </body>

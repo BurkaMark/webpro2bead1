@@ -8,8 +8,8 @@
     ?>
 </div>
 
-<div class="container-login">
-    <div class="wrapper-login">
+<div class="container_login">
+    <div class="wrapper_login">
         <h2>Sign in</h2>
 
         <form action="<?php echo URLROOT; ?>/users/login" method ="POST">
@@ -23,7 +23,7 @@
                 <?php echo $data['passwordError']; ?>
             </span>
 
-            <button id="submit" type="submit" value="submit">Küldés</button>
+            <button class="submit" type="submit" value="submit">Belépés</button>
 
             <p class="options">Még nem regisztrált? <a href="<?php echo URLROOT; ?>/users/register">Hozzon létre egy felhasználói fiókot!</a></p>
         </form>

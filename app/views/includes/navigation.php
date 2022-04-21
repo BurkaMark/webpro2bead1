@@ -4,10 +4,10 @@
             <a href="<?php echo URLROOT; ?>/index">Főoldal</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/newsandblogs">Hírek és bejegyzések</a>
+            <a href="<?php echo URLROOT; ?>/posts">Hírek és bejegyzések</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/trail">Tanösvények</a>
+            <a href="<?php echo URLROOT; ?>/trails">Tanösvények</a>
         </li>
         <li>
             <a href="<?php echo URLROOT; ?>/mnb">MNB</a>

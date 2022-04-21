@@ -8,58 +8,80 @@
     ?>
 </div>
 
-<div class="container">
+<div class="container_data">
     <h1>Tanösvények keresése</h1>
 
-    <h3>Keresés tanösvény neve alapján:</h3>
-    <form action="<?php echo URLROOT; ?>/trails/getTrailByName" method ="POST">
-        <input type="text" placeholder="Tanösvény neve" name="name">
+    <div class="wrapper_data">
+        <h3>Keresés tanösvény neve alapján:</h3>
+        <form action="<?php echo URLROOT; ?>/trails/getTrailByName" method ="POST">
+            <input type="text" placeholder="Tanösvény neve" name="name">
+            <button id="submit" type="submit" value="submit">Keresés</button>
+            <span class="invalidFeedback">
+                <?php echo $data['nameError']; ?>
+            </span>
+        </form>
         <span class="invalidFeedback">
-            <?php echo $data['nameError']; ?>
+            <?php echo $data['trailError']; ?>
         </span>
-        <button id="submit" type="submit" value="submit">Keresés</button>
-    </form>
 
-    <h3>Keresés település neve alapján:</h3>
-    <form action="<?php echo URLROOT; ?>/trails/getTrailBySettlement" method ="POST">
-        <input type="text" placeholder="A település neve" name="settlement">
+        <h3>Keresés település neve alapján:</h3>
+        <form action="<?php echo URLROOT; ?>/trails/getTrailBySettlement" method ="POST">
+            <input type="text" placeholder="A település neve" name="settlement">
+            <button id="submit" type="submit" value="submit">Keresés</button>
+            <span class="invalidFeedback">
+                <?php echo $data['nameError']; ?>
+            </span>
+        </form>
         <span class="invalidFeedback">
-            <?php echo $data['nameError']; ?>
+            <?php echo $data['setlmError']; ?>
         </span>
-        <button id="submit" type="submit" value="submit">Keresés</button>
-    </form>
 
-    <h3>Keresés nemzeti park neve alapján:</h3>
-    <form action="<?php echo URLROOT; ?>/trails/getTrailByNationalPark" method ="POST">
-        <input type="text" placeholder="A nemzeti park neve" name="nat_park">
+        <h3>Keresés nemzeti park neve alapján:</h3>
+        <form action="<?php echo URLROOT; ?>/trails/getTrailByNationalPark" method ="POST">
+            <input type="text" placeholder="A nemzeti park neve" name="nat_park">
+            <button id="submit" type="submit" value="submit">Kersés</button>
+            <span class="invalidFeedback">
+                <?php echo $data['nameError']; ?>
+            </span>
+        </form>
         <span class="invalidFeedback">
-            <?php echo $data['nameError']; ?>
+            <?php echo $data['npError']; ?>
         </span>
-        <button id="submit" type="submit" value="submit">Kersés</button>
-    </form>
-
-    <span class="invalidFeedback">
-        <?php echo $data['trailError']; ?>
-    </span>
-    <span class="invalidFeedback">
-        <?php echo $data['setlmError']; ?>
-    </span>
-    <span class="invalidFeedback">
-        <?php echo $data['npError']; ?>
-    </span>
-
-    <?php foreach($data['trail'] as $trail): ?>
-        <div class="container-item">
-            <p>
-                Tanösvény neve: <?php echo $trail->name; ?><br>
-                Hossza: <?php echo $trail->length; ?><br>
-                Állomások száma: <?php echo $trail->stops; ?><br>
-                A tanösvény bejárásához szükséges idő: <?php echo $trail->time; ?><br>
-                Van idegenvezetés? <?php if($trail->guide == 0): ?>Igen<?php else: ?>Nem<?php endif; ?><br>
-                A település neve, amelyhez a tanösvény tartozik: <?php echo $trail->setlement; ?><br>
-                A nemzeti park, amelyhez a tanösvény tartozik: <?php echo $trail->np; ?><br>
-            </p>
+    </div>
+    
+    <?php if(!empty($data['trail'])): ?>
+        <div id="trail_item">
+            <table>
+                <tr>
+                    <td>Tanösvény neve:</td>
+                    <td><?php echo $data['trail']['name']; ?></td>
+                </tr>
+                <tr>
+                    <td>Hossza:</td>
+                    <td><?php echo $data['trail']['length']; ?></td>
+                </tr>
+                <tr>
+                    <td>Állomások száma:</td>
+                    <td><?php echo $data['trail']['stops']; ?></td>
+                </tr>
+                <tr>
+                    <td>A tanösvény bejárásához szükséges idő:</td>
+                    <td><?php echo $data['trail']['time']; ?></td>
+                </tr>
+                <tr>
+                    <td>Van idegenvezetés?</td>
+                    <td><?php if($data['trail']['guide'] == 0): ?>Igen<?php else: ?>Nem<?php endif; ?></td>
+                </tr>
+                <tr>
+                    <td>A település neve, amelyhez a tanösvény tartozik:</td>
+                    <td><?php echo $data['trail']['setlement']; ?></td>
+                </tr>
+                <tr>
+                    <td>A nemzeti park, amelyhez a tanösvény tartozik:</td>
+                    <td><?php echo $data['trail']['np']; ?></td>
+                </tr>
+            </table>
         </div>
-    <?php endforeach; ?>
+    <?php endif; ?>
 </div>
 </body>

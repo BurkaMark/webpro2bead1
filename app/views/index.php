@@ -2,12 +2,14 @@
     require APPROOT . '/views/includes/head.php';
 ?>
 
-<div id="section-landing">
+<div class="navbar">
     <?php
-        require APPROOT . '/views/includes/navigation.php';
+       require APPROOT . '/views/includes/navigation.php';
     ?>
+</div>
 
-    <divc class="wrapper-landing">
+<div class="index">
+    <divc class="index_container">
         <h1>Magyar Tanösvény Szövetség (MaTaSz)</h1>
         <h3>Minden, ami természet, túra</h3>
 
@@ -24,6 +26,7 @@
                 a lentebb található lehetőségek egyikén!
             </p>
         </div>
+        <br>
 
         <button class="textButton" onclick="hideUnhideText('history')">Rövid történetünk</button>
 
@@ -53,6 +56,7 @@
                 hogy, aki külföldi túrán gondolkodik, az is megtalálhassa honlapunkon a szükséges információkat.
             </p>
         </div>
+        <br>
 
         <button class="textButton" onclick="hideUnhideText('contacts')">Kapcsolat</button>
 
