@@ -10,7 +10,7 @@
 
         public function findAllPosts()
         {
-            $this->db->query('SELECT * FROM bejegyzesek ORDER BY letrehozva ASC');
+            $this->db->query('SELECT * FROM bejegyzesek ORDER BY letrehozva DESC');
 
             $results = $this->db->resultSet();
 

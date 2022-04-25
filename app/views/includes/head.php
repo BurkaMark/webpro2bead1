@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -12,6 +12,6 @@
 <body>
 <div class="head">
     <?php if(isset($_SESSION['user_id'])): ?>
-        <p>Bejelentkezett: <?php echo $_SESSION['lastName']; ?> <?php echo $_SESSION['firstName']; ?> (<?php echo $_SESSION['username']; ?>)</p>
+        <p>Bejelentkezett: <?php echo $_SESSION['firstName']; ?> <?php echo $_SESSION['lastName']; ?> (<?php echo $_SESSION['username']; ?>)</p>
     <?php endif; ?>
 </div>

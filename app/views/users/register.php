@@ -33,7 +33,7 @@
                 <?php echo $data['confirmPasswordError']; ?>
             </span>
 
-            <input type="text" placeholder="ezetéknév *" name="lastName">
+            <input type="text" placeholder="Vezetéknév *" name="lastName">
             <span class="invalidFeedback">
                 <?php echo $data['lastNameError']; ?>
             </span>

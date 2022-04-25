@@ -13,10 +13,10 @@
             $this->db->query('INSERT INTO felhasznalok (username, keresztnev, vezeteknev, email, jelszo) VALUES(:username, :lastName, :firstName, :email, :password)');
     
             $this->db->bind(':username', $data['username']);
-            $this->db->bind(':lastName', $data['vezeteknev']);
-            $this->db->bind(':firstName', $data['keresztnev']);
+            $this->db->bind(':lastName', $data['lastName']);
+            $this->db->bind(':firstName', $data['firstName']);
             $this->db->bind(':email', $data['email']);
-            $this->db->bind(':password', $data['jelszo']);
+            $this->db->bind(':password', $data['password']);
 
     
             if ($this->db->execute()) 

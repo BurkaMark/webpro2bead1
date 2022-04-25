@@ -22,9 +22,11 @@
                 header("Location: " . URLROOT . "/posts");
             }
 
-            $data = ['title' => '',
+            $data = ['user_id' => '',
+                        'title' => '',
                         'body' => '',
-                        'titelError' => '',
+                        'created' => '',
+                        'titleError' => '',
                         'bodyError' => ''];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -34,7 +36,7 @@
                 $data = ['user_id' => $_SESSION['user_id'],
                             'title' => trim($_POST['title']),
                             'body' => trim($_POST['body']),
-                            'created' => date("Y-m-d"),
+                            'created' => date("Y-m-d H:i:s"),
                             'titleError' => '',
                             'bodyError' => ''];
                 
@@ -58,9 +60,13 @@
                         die("Hiba történt, kérem próbálja meg ismét.");
                     }
                 }
-
-                $this->view('posts/create', $data);
+                else
+                {
+                    $this->view('posts/create', $data);
+                }
             }
+
+            $this->view('posts/create', $data);
         }
 
         public function update($id)
@@ -71,14 +77,17 @@
             {
                 header("Location: " . URLROOT . "/posts");
             }
-            elseif($post->user_id != $_SESSION['user_id'])
+            elseif($post->userid != $_SESSION['user_id'])
             {
                 header("Location: " . URLROOT . "/posts");
             }
 
-            $data = ['post' => $post,
+            $data = ['id' => '',
+                        'post' => $post,
+                        'user_id' => '',
                         'title' => '',
                         'body' => '',
+                        'modified' => '',
                         'titleError' => '',
                         'bodyError' => ''];
 
@@ -91,7 +100,7 @@
                             'user_id' => $_SESSION['user_id'],
                             'title' => trim($_POST['title']),
                             'body' => trim($_POST['body']),
-                            'modified' => date("Y-m-d"),
+                            'modified' => date("Y-m-d H:i:s"),
                             'titleError' => '',
                             'bodyError' => ''];
 
@@ -122,9 +131,13 @@
                         die("Hiba történt, kérem próbálja meg ismét.");
                     }
                 }
-
-                $this->view('posts/update', $data);
+                else
+                {
+                    $this->view('posts/update', $data);
+                }
             }
+            
+            $this->view('posts/update', $data);
         }
 
         public function delete($id)

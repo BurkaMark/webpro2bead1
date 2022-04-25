@@ -13,7 +13,7 @@
 
     <form action="<?php echo URLROOT; ?>/posts/update/<?php echo $data['post']->id ?>" method="POST">
         <div class="form_item">
-            <input type="text" name="title" value="<?php echo $data['post']->title ?>">
+            <input type="text" name="title" value="<?php echo $data['post']->cim ?>">
 
             <span class="invalidFeedback">
                 <?php echo $data['titleError']; ?>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-item">
-            <textarea name="body" placeholder="Bejegyzés tartalma..."> <?php echo $data['post']->body ?></textarea>
+            <textarea name="body" placeholder="Bejegyzés tartalma..."> <?php echo $data['post']->tartalom ?></textarea>
 
             <span class="invalidFeedback">
                 <?php echo $data['bodyError']; ?>
