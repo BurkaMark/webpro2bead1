@@ -1,11 +1,13 @@
 <?php
     class Posts extends Controller
     {
+        /* Constructor */
         public function __construct()
         {
             $this->postModel = $this->model('Post');
         }
 
+        /* Index function to get all posts */
         public function index()
         {
             $posts = $this->postModel->findAllPosts();
@@ -15,8 +17,10 @@
             $this->view('/posts/index', $data);
         }
 
+        /* Function to create a new post */
         public function create()
         {
+            /* Only registered and logged in users are allowd to create a new post */
             if(!isLoggedIn())
             {
                 header("Location: " . URLROOT . "/posts");
@@ -49,6 +53,7 @@
                     $data['bodyError'] = "Üres tartalmú bejegyzés nem rögzíthető!";
                 }
 
+                /* If everything is ok we can create the post */
                 if(empty($data['titleError']) && empty($data['bodyError']))
                 {
                     if($this->postModel->addPost($data))
@@ -69,10 +74,12 @@
             $this->view('posts/create', $data);
         }
 
+        /* Function to modify an existing post */
         public function update($id)
         {
             $post = $this->postModel->findPostById($id);
 
+            /* Only the post's original creator can modify the post and he/she have to be logged in */
             if(!isLoggedIn())
             {
                 header("Location: " . URLROOT . "/posts");
@@ -120,6 +127,7 @@
                     $data['bodyError'] = 'Kérem módostsa vagy a címet, vagy a bejegyzés tartalmát!';
                 }
     
+                /* If everything is ok we can modify the post */
                 if (empty($data['titleError']) && empty($data['bodyError']))
                 {
                     if ($this->postModel->updatePost($data))
@@ -140,10 +148,12 @@
             $this->view('posts/update', $data);
         }
 
+        /* Function to delete a post */
         public function delete($id)
         {
             $post = $this->postModel->findPostById($id);
     
+            /* Only the post's original creator can delete a post and he/she have to be logged in */
             if(!isLoggedIn())
             {
                 header("Location: " . URLROOT . "/posts");

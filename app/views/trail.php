@@ -12,10 +12,10 @@
     <h1>Tanösvények keresése</h1>
 
     <div class="wrapper_data">
-        <h3>Keresés tanösvény neve alapján:</h3>
+        <h2>Keresés tanösvény neve alapján:</h2>
         <form action="<?php echo URLROOT; ?>/trails/getTrailByName" method ="POST">
             <input type="text" placeholder="Tanösvény neve" name="name">
-            <button id="submit" type="submit" value="submit">Keresés</button>
+            <button id="search" type="submit" value="submit">Keresés</button>
             <span class="invalidFeedback">
                 <?php echo $data['nameError']; ?>
             </span>
@@ -24,10 +24,10 @@
             <?php echo $data['trailError']; ?>
         </span>
 
-        <h3>Keresés település neve alapján:</h3>
+        <h2>Keresés település neve alapján:</h2>
         <form action="<?php echo URLROOT; ?>/trails/getTrailBySettlement" method ="POST">
             <input type="text" placeholder="A település neve" name="settlement">
-            <button id="submit" type="submit" value="submit">Keresés</button>
+            <button id="search" type="submit" value="submit">Keresés</button>
             <span class="invalidFeedback">
                 <?php echo $data['nameError']; ?>
             </span>
@@ -36,10 +36,10 @@
             <?php echo $data['setlmError']; ?>
         </span>
 
-        <h3>Keresés nemzeti park neve alapján:</h3>
+        <h2>Keresés nemzeti park neve alapján:</h2>
         <form action="<?php echo URLROOT; ?>/trails/getTrailByNationalPark" method ="POST">
             <input type="text" placeholder="A nemzeti park neve" name="nat_park">
-            <button id="submit" type="submit" value="submit">Kersés</button>
+            <button id="search" type="submit" value="submit">Kersés</button>
             <span class="invalidFeedback">
                 <?php echo $data['nameError']; ?>
             </span>

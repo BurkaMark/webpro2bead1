@@ -28,7 +28,7 @@
             </span>
         </div>
 
-        <button class="create" name="submit" type="submit">Módosítás</button>
+        <button class="change" name="submit" type="submit">Módosítás</button>
     </form>
 </div>
 </body>

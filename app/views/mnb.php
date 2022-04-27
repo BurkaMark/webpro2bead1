@@ -11,7 +11,7 @@
 <div class="container_data">
 	<h1>A Magyar Nemzeti Bank jelenlegi valuta árfolyamai</h1>
 	
-	<h3>Keresés valuta átváltására:</h3>
+	<h2>Keresés valuta átváltására:</h2>
 
 	<div class="wrapper_data">
 		<form action="<?php echo URLROOT; ?>/mnb/GetExchangeRates" method ="POST">
@@ -25,7 +25,7 @@
 				<?php echo $data['curr2Error']; ?>
 			</span>
 
-			<button id="submit" type="submit" value="submit">Átváltás</button>
+			<button id="search" type="submit" value="submit">Átváltás</button>
 		</form>
 
 		<span class="invalidFeedback">
@@ -36,7 +36,7 @@
 
 	<div id="currencies_item">
 		<?php if(!empty($data['curr1'])): ?>
-			<h3>A keresés eredménye:</h3>
+			<h2>A keresés eredménye:</h2>
 			<table>
 				<tr>
 					<th><?php echo $data['curr1']; ?></th>
@@ -48,7 +48,7 @@
 				</tr>
 			</table>
 			<br>
-			<h3>Visszaváltás:</h3>
+			<h2>Visszaváltás:</h2>
 			<table>
 				<tr>
 					<th><?php echo $data['curr2']; ?></th>

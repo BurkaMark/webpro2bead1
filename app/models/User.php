@@ -3,11 +3,13 @@
     {
         private $db;
 
+        /* Constructor */
         public function __construct()
         {
             $this->db = new Database;
         }
 
+        /* Function to register a user */
         public function register($data) 
         {
             $this->db->query('INSERT INTO felhasznalok (username, keresztnev, vezeteknev, email, jelszo) VALUES(:username, :lastName, :firstName, :email, :password)');
@@ -29,6 +31,7 @@
             }
         }
 
+        /* Function to login a user */
         public function login($username, $password) {
             $this->db->query('SELECT * FROM felhasznalok WHERE username = :username');
     
@@ -46,6 +49,7 @@
             }
         }
 
+        /* Function to find a user by username */
         public function findUserByUsername($username)
         {
             $this->db->query('SELECT * FROM felhasznalok WHERE username = :username');
@@ -62,6 +66,7 @@
             }
         }
 
+        /* Function to find a user by email */
         public function findUserByEmail($email)
         {
             $this->db->query('SELECT * FROM felhasznalok WHERE email = :email');

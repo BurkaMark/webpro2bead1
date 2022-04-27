@@ -28,7 +28,7 @@
             </span>
         </div>
 
-        <button class="create" name="submit" type="submit">Létrehozás</button>
+        <button class="create_post" name="submit" type="submit">Létrehozás</button>
     </form>
 </div>
 </body>

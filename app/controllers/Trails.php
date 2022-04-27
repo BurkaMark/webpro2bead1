@@ -44,6 +44,7 @@
                     $data['nameError'] = 'Kérem adja meg a tanösvény nevét!';
                 }
 
+                /* If everythings ok we can search for the trail by it's name */
                 if(empty($data['nameError']))
                 {
                     $trail = $this->trailsModel->getTrailByName($data['name']);
@@ -105,6 +106,7 @@
                     $data['nameError'] = 'Kérem adja meg a település nevét!';
                 }
 
+                /* If everythings ok we can search for the trail by the settlement it belongs to */
                 if(empty($data['nameError']))
                 {
                     $trail = $this->trailsModel->getTrailByName($data['settlement']);
@@ -143,7 +145,7 @@
             $this->view('trail', $data);
         }
 
-        /* Function to get the trail by thy national park it belongs to */
+        /* Function to get the trail by the national park it belongs to */
         public function getTrailByNationalPark()
         {
             $data = [   'name' => '',
@@ -166,6 +168,7 @@
                     $data['nameError'] = 'Kérem adja meg a nemzeti park nevét!';
                 }
 
+                /* If everythings ok we can search for the trail by the national park it belongs to */
                 if(empty($data['nameError']))
                 {
                     $trail = $this->trailsModel->getTrailByName($data['nat_park']);

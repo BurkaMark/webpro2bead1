@@ -23,7 +23,7 @@
                 <?php echo $data['passwordError']; ?>
             </span>
 
-            <button class="submit" type="submit" value="submit">Belépés</button>
+            <button id="submit" type="submit" value="submit">Belépés</button>
 
             <p class="options">Még nem regisztrált? <a href="<?php echo URLROOT; ?>/users/register">Hozzon létre egy felhasználói fiókot!</a></p>
         </form>

@@ -54,6 +54,7 @@
                             'rate1Error' => '',
                             'rate2Error' => ''];
 
+                /* Validating inputs */
                 $currencieValidation = "/^[A-Z]*$/";
 
                 if(empty($data['curr1']))
@@ -82,6 +83,7 @@
                     $data['curr2Error'] = 'A megadott valuta, melyre át szeretne váltani, nem található adatbázisunkban!';
                 }
 
+                /* If everything is ok we search for the exchange rates */
                 if(empty($data['curr1Error']) && empty($data['curr2Error']))
                 {
                     try
@@ -156,6 +158,7 @@
                         $data['rate2Error'] = 'A valutáról, melyre át szeretne váltani, nincs a mai napon árfolyam információ.';
                     }
 
+                    /* If we got both exchange rates we calculate the exchange rate between the two currencies */
                     if(empty($data['rate1Error']) && empty($data['rate2Error']))
                     {
                         $f_unit1 = floatval($unit1);
@@ -204,7 +207,7 @@
             $this->view('mnb', $data);
         }
 
-        /* Validating input currencie */
+        /* Function to validate input currencie */
         public function ValidateCurrencies($curr)
         {
             try

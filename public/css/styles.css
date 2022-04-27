@@ -22,13 +22,13 @@ h1
 
 h2
 {
-    font-size: 36px;
+    font-size: 28px;
     margin: 0;
 }
 
 h3
 {
-    font-size: 26px;
+    font-size: 12px;
     color: #222121;
     font-weight: 100;
     font-style: italic;
@@ -37,6 +37,19 @@ h3
 p
 {
     font-size: 16px;
+}
+
+.head
+{
+    margin: 0px auto;
+    position: absolute;
+}
+
+.head p
+{
+    color: #143116;
+    font-weight: 100;
+    text-align: left;
 }
 
 .top-nav
@@ -82,104 +95,173 @@ p
 {
     position: relative;
     width: 80%;
-    margin: 0 auto;
+    margin: 0px auto;
+    padding: 10px 20px;
     text-align: center;
     top: 15%;
 }
 
 .index_container h1
 {
-    font-size: 46px;
     margin: 0;
-    font-weight: 100;
+    font-weight: 1000;
 }
 
-.index_container h3
+.index_container h2
 {
-    font-size: 26px;
     margin: 0;
     font-weight: 100;
 }
 
 .textButton
 {
-    width: 300px;
+    width: 180px;
     height: 28px;
     border: 1px solid #0a1a0b;
     background-color: #0a1a0b;
     color: #ffffff;
     font-size: 20px;
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0px 0px 20px;
 }
 
 #about
 {
-    width: 100%;
-    margin: 0 auto;
+    width: 98%;
+    margin: 0px 20px;
     text-align: left;
-}
-
-.about p
-{
-    font-size: 16px;
 }
 
 #history
 {
-    width: 100%;
-    margin: 0 auto;
+    width: 98%;
+    margin: 0px 20px;
     text-align: left;
-}
-
-.history h3
-{
-    font-size: 26px;
-}
-
-.history p
-{
-    font-size: 16px;
 }
 
 #contacts
 {
-    width: 100%;
-    margin: 0 auto;
+    width: 98%;
+    margin: 0px 20px;
     text-align: left;
 }
 
-.contacts p
+#contacts p
 {
-    font-size: 16px;
     font-style: italic;
 }
 
-.invalidFeedback {
+.container_center
+{
+    position: relative;
+    width: 90%;
+    margin: 0px auto;
+    padding: 10px 20px;
+    top: 15%;
+}
+
+.container_center h1
+{
+    text-align: center;
+}
+
+.create_post
+{
+    padding: 5px 10px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #0a1a0b;
+    border: 1px solid #0a1a0b;
+}
+
+.create_post:hover
+{
+    background-color: #153618;
+    transition: 0.20s ease-in-out;
+}
+
+.change
+{
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #0a1a0b;
+    border: 1px solid #0a1a0b;
+    float: left;
+}
+
+.change:hover
+{
+    background-color: #153618;
+    transition: 0.20s ease-in-out;
+}
+
+.delete
+{
+    margin: 0px auto;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #af0f0f;
+    border: 1px solid #af0f0f;
+    float: right;
+}
+
+#posts_container
+{
+    border-bottom: 1px solid #dcdcdc;
+    padding: 40px 0px;
+    text-align: left;
+    margin: 20px auto;
+}
+
+.form_item input, textarea
+{
+    width: 600px;
+    margin: 10px 0px;
+    border: 1px solid #cbcbcb;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    padding: 8px;
+    font-size: 18px;
+    color: #666;
+}
+
+.form_item input
+{
+    height: 30px;
+}
+
+textarea
+{
+    height: 400px;
+}
+
+.form_item input, textarea::placeholder
+{
+    font-size: 14px;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.invalidFeedback
+{
     color: #ff0000;
     display: block;
 }
 
 .container_data
 {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     position: relative;
     text-align: center;
     top: 15%;
 }
 
-.container_data h1
+.container_data h2
 {
-    font-size: 48px;
-    margin: 0;
-    font-weight: 100;
-}
-
-.container_data h3
-{
-    font-size: 26px;
-    margin: 0;
-    font-weight: 100;
+    font-size: 20px;
+    padding: 20px 0px 0px 0px;
 }
 
 .wrapper_data
@@ -192,13 +274,36 @@ p
 .wrapper_data input
 {
     width: 300px;
-    height: 28px;
+    height: 26px;
     border: 1px solid #0a1a0b;
     background-color: #f5f5f5;
-    font-size: 20px;
+    font-size: 14px;
     display: block;
     position: relative;
     margin: 20px auto;
+}
+
+.wrapper_data input::placeholder
+{
+    color: #424242;
+    font-size: 14px;
+}
+
+
+#search {
+    width: 150px;
+    height: 30px;
+    border: 1px solid #0a1a0b;
+    background-color: #0a1a0b;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0px 0px 20px 0px;
+}
+
+#search:hover {
+    border: 1px solid #205024;
+    background-color: #205024;
+    transition: 0.15s ease-in;
 }
 
 #trail_item
@@ -206,36 +311,103 @@ p
     width: 80%;
     margin: 0 auto;
     position: relative;
+    padding: 20px 0px 0px 0px;
 }
 
-.trail_item p
+#currencies_item
 {
-    font-size: 16px;
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0px 0px 0px;
 }
 
-input::placeholder
+table, td, th
 {
-    color: #424242;
-    font-size: 16px;
+    border: 1px solid black;
 }
 
-.wrapper-login h3
+table
 {
-    font-size: 26px;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-#submit {
+tr
+{
+    text-align: left;
+}
+
+td
+{
+    padding: 2px 5px;
+}
+
+th
+{
+    padding: 2px 5px;
+    width: 50%;
+}
+
+.container_login
+{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 20%;
+}
+
+.wrapper_login
+{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wrapper_login input
+{
+    width: 200px;
+    height: 26px;
+    border: 1px solid #cccccc;
+    background-color: #f5f5f5;
+    font-size: 18px;
+    display: block;
+    position: relative;
+    margin: 20px auto;
+}
+
+.wrapper_login input::placeholder
+{
+    color: #a1a1a1;
+    font-size: 14px;
+}
+
+#submit
+{
     width: 200px;
     height: 42px;
-    border: 1px solid #0a1a0b;
-    background-color: #0a1a0b;
+    border: 1px solid #000000;
+    background-color: #000000;
     color: #ffffff;
     font-size: 20px;
     margin: 20px 0px 0px 0px;
 }
 
-#submit:hover {
-    border: 1px solid #205024;
-    background-color: #205024;
+#submit:hover
+{
+    border: 1px solid #a1a1a1;
+    background-color: #a1a1a1;
     transition: 0.15s ease-in;
+}
+
+.options a
+{
+    color: #006400;
+}
+
+.options a:hover
+{
+    color: #000000;
+    transition: 0.20s ease-in;
+    text-decoration: none;
 }

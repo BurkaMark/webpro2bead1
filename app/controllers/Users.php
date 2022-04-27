@@ -1,11 +1,13 @@
 <?php
     class Users extends Controller 
     {
+        /* Constructor */
         public function __construct() 
         {
             $this->userModel = $this->model('User');
         }
 
+        /* Function to register a user */
         public function register() 
         {
             $data = [
@@ -42,6 +44,7 @@
                     'firstNameError'        => ''
                 ];
 
+                /* Validating input data */
                 $nameValidation     = "/^[a-zA-Z0-9]*$/";
                 $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
@@ -52,6 +55,13 @@
                 elseif (!preg_match($nameValidation, $data['username'])) 
                 {
                     $data['usernameError'] = 'A felhasználói név csak betüket és számokat tartalmazhat.';
+                }
+                else
+                {
+                    if ($this->userModel->findUserByUsername($data['username']))
+                    {
+                        $data['usernameError'] = 'Ezzel a felhasználói névvel már regisztráltak.';
+                    }
                 }
 
                 if (empty($data['email']))
@@ -105,6 +115,7 @@
                     $data['firstNameError'] = 'Kérem adja meg keresztnevét.'; 
                 }
 
+                /* If everything is ok we can register the user */
                 if (empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError']) && empty($data['lastNameError']) && empty($data['firstNameError'])) 
                 {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -123,6 +134,7 @@
             $this->view('users/register', $data);
         }
 
+        /* Function to login the user */
         public function login() 
         {
             $data = [
@@ -154,6 +166,7 @@
                     $data['passwordError'] = 'Kérem adja meg a jelszót.';
                 }
 
+                /* If everything is ok we can log in the user */
                 if (empty($data['usernameError']) && empty($data['passwordError'])) 
                 {
                     $loggedInUser = $this->userModel->login($data['username'], $data['password']);
@@ -183,6 +196,7 @@
             $this->view('users/login', $data);
         }
 
+        /* Function to create a session for the user */
         public function createUserSession($user) 
         {
             $_SESSION['user_id']    = $user->id;
@@ -193,6 +207,7 @@
             header('location:' . URLROOT . '/pages/index');
         }
 
+        /* Function to log out the user */
         public function logout() 
         {
             unset($_SESSION['user_id']);

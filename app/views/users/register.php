@@ -43,7 +43,7 @@
                 <?php echo $data['firstNameError']; ?>
             </span>
 
-            <button class="submit" type="submit" value="submit">Regisztrálás</button>
+            <button id="submit" type="submit" value="submit">Regisztrálás</button>
         </form>
     </div>
 </div>
