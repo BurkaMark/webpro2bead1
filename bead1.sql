@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Ápr 09. 17:19
+-- Létrehozás ideje: 2022. Ápr 28. 20:06
 -- Kiszolgáló verziója: 10.4.22-MariaDB
--- PHP verzió: 8.1.2
+-- PHP verzió: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bejegyzesek` (
   `id` int(11) NOT NULL,
-  `userid` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `userid` int(11) NOT NULL,
   `cim` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `tartalom` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `letrehozva` date NOT NULL,
-  `modositva` date NOT NULL
+  `tartalom` text COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `letrehozva` datetime NOT NULL,
+  `modositva` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `bejegyzesek`
+--
+
+INSERT INTO `bejegyzesek` (`id`, `userid`, `cim`, `tartalom`, `letrehozva`, `modositva`) VALUES
+(1, 1, 'Elkezdtük', 'Üdvözlünk mindenkit első bejegyzésünknél, melyet a honlap elindulásával hoztunk létre.\r\nBízunk benne, hogy hasznosnak találják honlapunkat és sok hasznos információhoz juthatnak majd hozzá a honlapon.', '2022-04-25 20:12:22', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -50,6 +57,13 @@ CREATE TABLE `felhasznalok` (
   `email` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `jelszo` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`id`, `username`, `keresztnev`, `vezeteknev`, `email`, `jelszo`) VALUES
+(1, 'admin', 'Burka', 'Márk', 'admin@matesz.hu', '$2y$10$OhtVN5E7xzVh42l1URdu8eBVB0kdC7bQge1I4iuZgv9CbyHiyNkw.');
 
 -- --------------------------------------------------------
 
@@ -376,7 +390,8 @@ INSERT INTO `ut` (`azon`, `nev`, `hossz`, `allomas`, `ido`, `vezetes`, `telepule
 -- A tábla indexei `bejegyzesek`
 --
 ALTER TABLE `bejegyzesek`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`) USING BTREE;
 
 --
 -- A tábla indexei `felhasznalok`
@@ -414,13 +429,13 @@ ALTER TABLE `ut`
 -- AUTO_INCREMENT a táblához `bejegyzesek`
 --
 ALTER TABLE `bejegyzesek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `ut`

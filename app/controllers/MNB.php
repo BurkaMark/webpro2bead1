@@ -10,6 +10,7 @@
             
         }
 
+        /* Index function for opening the site */
         public function index()
         {
             $data = ['curr1' => '',

@@ -56,7 +56,7 @@
             $this->statement->bindValue($parameter, $value, $type);
         }
 
-        /* Execute function */
+        /* Execute statement */
         public function execute()
         {
             return $this->statement->execute();
