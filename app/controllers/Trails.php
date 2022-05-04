@@ -161,7 +161,7 @@
             {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $data['settlenat_parkment'] = trim($_POST['nat_park']);
+                $data['nat_park'] = trim($_POST['nat_park']);
 
                 if(empty($data['nat_park']))
                 {

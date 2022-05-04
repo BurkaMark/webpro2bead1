@@ -212,6 +212,8 @@
         {
             unset($_SESSION['user_id']);
             unset($_SESSION['username']);
+            unset($_SESSION['lastName']);
+            unset($_SESSION['firstName']);
 
             header('location:' . URLROOT . '/users/login');
         }
